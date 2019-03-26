@@ -35,7 +35,7 @@ def main():
     fps_clock = pygame.time.Clock()
     game_screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
     game_font = pygame.font.Font("freesansbold.ttf", 20)
-    pygame.display.set_caption("Tanya's Snake")
+    pygame.display.set_caption("Avi's Snake")
 
     show_Start_Screen()
     while True:
