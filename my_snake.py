@@ -146,6 +146,7 @@ def show_Start_Screen():
     degrees2 = 0
 
     while True:
+        #Rotates the Objects on the starting screen
         game_screen.fill(BACKGROUND_COLOR)
         rotated_Surface1 = pygame.transform.rotate(title_Surface1,degrees1)
         rotated_Rectangle1 = rotated_Surface1.get_rect()
@@ -158,7 +159,7 @@ def show_Start_Screen():
         game_screen.blit(rotated_Surface2, rotated_Rectangle2)
 
         draw_Key_Press_Message()
-
+        
         pygame.display.update()
         fps_clock.tick(FPS)
         degrees1 += 2
@@ -197,7 +198,7 @@ def draw_Grid():
     for y in range(0, WINDOW_HEIGHT, CELL_SIZE):
         pygame.draw.line(game_screen, DARK_GRAY, (0,y), (WINDOW_WIDTH,y))
 
-#Draws a dark green box for each snake segment
+
 def draw_Snake(snake_Coordinates):
     for coord in snake_Coordinates:
         x = coord["x"] * CELL_SIZE
