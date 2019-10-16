@@ -8,3 +8,7 @@ python3 -m pip install -U pygame --user
 ```
 ## Usage
 After installing pygame, run the source code
+
+## Instructions
+Press any key to get past the title screen. <br /> 
+Use Arrow Keys or WASD to control the snake
