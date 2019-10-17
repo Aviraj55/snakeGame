@@ -1,7 +1,7 @@
 import random, pygame, sys
 from pygame.locals import *
 
-WINDOW_WIDTH = 1200
+WINDOW_WIDTH = 1200 #Assign the number of pixels in the window
 WINDOW_HEIGHT = 600
 CELL_SIZE = 30
 FPS = 60
@@ -30,11 +30,11 @@ SNAKE_HEAD = 0
 
 def main():
     global fps_clock, game_screen, game_font, high_Score
-
+  
     high_Score = 0
     pygame.init()
     fps_clock = pygame.time.Clock()
-    game_screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+    game_screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))  #Opens the pygame GUI window
     game_font = pygame.font.Font("freesansbold.ttf", 20)
     pygame.display.set_caption("Avi's Snake")
 
@@ -91,7 +91,7 @@ def run_Game():
         else:
             del snake_Coords[-1]
         
-        #Move the snake by adding a segment in the direction of the motion
+        #Move the snake by adding a segment in the direction of the motion (+Y is Down, +X is Right)
         if direction == UP:
             new_Head = {'x': snake_Coords[SNAKE_HEAD]['x'], 'y': snake_Coords[SNAKE_HEAD]['y'] - 1}
         elif direction == DOWN:
@@ -103,9 +103,9 @@ def run_Game():
 
         snake_Coords.insert(SNAKE_HEAD,new_Head)
 
-        #Draw the game board, game elements
+        #Draw the game board & game elements
         game_screen.fill(BACKGROUND_COLOR)
-        draw_Grid()
+        #draw_Grid(), not used for aesthetic purposes
         draw_Snake(snake_Coords)
         draw_Apple(apple)
         game_score = len(snake_Coords) - 3
@@ -115,12 +115,12 @@ def run_Game():
         fps_clock.tick(FPS)
 
 def draw_Key_Press_Message():
-    press_Key_Surface = game_font.render("Press any key to play.", True, DARK_GRAY)
+    press_Key_Surface = game_font.render("Press any key (except escape) to play.", True, DARK_GRAY)
     press_Key_Rectangle = press_Key_Surface.get_rect()
     press_Key_Rectangle.topleft = (WINDOW_WIDTH - 250, WINDOW_HEIGHT - 30)
     game_screen.blit(press_Key_Surface, press_Key_Rectangle)
 
-#Checks if there are any QUIT events in the queue, ex. when esc key stopped being pressed
+#Checks if there are any QUIT events in the queue, eg. when esc key stopped being pressed
 def check_For_Key_Press(): 
     if len(pygame.event.get(QUIT)) > 0:
         terminate()
@@ -129,7 +129,7 @@ def check_For_Key_Press():
 
     if len(key_Up_Events) == 0:
         return None
-    if key_Up_Events[0].key == K_ESCAPE:
+    if key_Up_Events[0].key == K_ESCAPE: #Escapes game if ESC key is pressed
         terminate()
     return key_Up_Events[0].key
 
@@ -192,7 +192,7 @@ def show_Game_Over_Screen():
             pygame.event.get() #clears the event queue
             return
 
-def draw_Grid():
+def draw_Grid(): #Draws the grid, not used for aesthetic purposes. Can be enabled if called, however.
     for x in range(0, WINDOW_WIDTH, CELL_SIZE):
         pygame.draw.line(game_screen, DARK_GRAY, (x,0), (x,WINDOW_HEIGHT))
     for y in range(0, WINDOW_HEIGHT, CELL_SIZE):
@@ -225,7 +225,7 @@ def draw_Score(score):
 
 def terminate():
     pygame.quit()
-    sys.exit()
+    sys.exit("User terminated game")
 
 if __name__ == '__main__':
     main()
