@@ -11,12 +11,13 @@ CELL_WIDTH = int(WINDOW_WIDTH / CELL_SIZE) #Number of cells in the width of the 
 CELL_HEIGHT = int(WINDOW_HEIGHT / CELL_SIZE) #Number of cells in the height of the window
 
 #RGB TABLE      R    G   B  
-WHITE =      (255, 255, 255)
-BLACK =      (  0,   0,   0)
-RED =        (255,   0,   0)
+WHITE      = (255, 255, 255)
+BLACK      = (  0,   0,   0)
+RED        = (255,   0,   0)
 GREEN      = (  0, 255,   0)
 DARK_GREEN = (  0, 155,   0)
 DARK_GRAY  = ( 40,  40,  40)
+
 BACKGROUND_COLOR = BLACK
 
 UP = "up"
